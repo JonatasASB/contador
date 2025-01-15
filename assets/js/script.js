@@ -1,24 +1,35 @@
 function verificar() {
-    var start = Number(document.querySelector('#start').value)
-    var end = Number(document.querySelector('#end').value)
-    var step = Number(document.querySelector('#step').value)
-    var res = document.querySelector('div.res')
-    if (start == 0 && end == 0) {
-        res.innerHTML = 'Insira valores válidos'
-    }  else if(step <= 0) {
-        alert('Quantidade de passos invalida, iniciando do mínimo possível 1')
-        for (n = start; n <= end; n++) {
-            res.innerHTML += `${n} &#128073;`
-        }
-        res.innerHTML += `&#129302;`
+    let start = document.getElementById('start')
+    let end = document.getElementById('end')
+    let step = document.getElementById('step')
+    let res = document.querySelector('div.res')
+    if (start.value.length == 0 || end.value.length == 0 || step.value.length == 0) {
+        res.innerHTML = `Você esqueceu de digitar algum valor`
     } else {
-        for (n = start; n <= end; n+= step) {
-            res.innerHTML += `${n} &#128073;`
+        let i = Number(start.value)
+        let f = Number(end.value)
+        let p = Number(step.value)
+        if (p <= 0) {
+            window.alert(`Quantidade de passos invalida, começando do passo :1`)
+            p = 1
         }
-            res.innerHTML += `&#129302;`
+        if (i < f) {
+            //contagem crescente
+            for (x = i; x <= f; x += p) {
+                res.innerHTML += `\u{1f449} ${x} `
+            } 
+        } else if (i > f) {
+            //contagem decrescente
+            for (x = i; x >= f; x -= p) {
+                res.innerHTML += `\u{1f449} ${x} `
+            }
+        } 
     }
+    res.innerHTML += `\u{1f3c1}`;
 }
+
+
 function limpar() {
-    res = document.querySelector('div.res');
-    res.innerHTML = ''
+    let res = document.querySelector('div.res')
+    res.innerHTML = ' '
 }
