@@ -3,11 +3,9 @@ function verificar() {
     var end = Number(document.querySelector('#end').value)
     var step = Number(document.querySelector('#step').value)
     var res = document.querySelector('div.res')
-    if (start <= 0 && end <= 0 || start < 0 || end < 0) {
-        alert('O valor de inicio e fim devem ser maior ou igual a 0')
-    } else if (start > end) {
-        alert('O valor do fim deve ser maior que o início')
-    } else if(step <= 0) {
+    if (start == 0 && end == 0) {
+        res.innerHTML = 'Insira valores válidos'
+    }  else if(step <= 0) {
         alert('Quantidade de passos invalida, iniciando do mínimo possível 1')
         for (n = start; n <= end; n++) {
             res.innerHTML += `${n} &#128073;`
